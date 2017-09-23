@@ -21,16 +21,26 @@ function UserInfo(props){// = {author}
     </div>
   )
 }
+function CommentText({text}){
+  return (
+    <div className="Comment-text">
+      {text}
+    </div>
+  )
+}
+function CommentDate({date}){
+  return (
+    <div className="Comment-date">
+      {formatDate(date)}
+    </div>
+  )
+}
 function Comment(props) {
   return (
     <div className="Comment">
       <UserInfo author={props.author}/>
-      <div className="Comment-text">
-        {props.text}
-      </div>
-      <div className="Comment-date">
-        {formatDate(props.date)}
-      </div>
+      <CommentText text={props.text}/>
+      <CommentDate date={props.date}/>
     </div>
   );
 }
