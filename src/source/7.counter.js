@@ -4,6 +4,12 @@ import ReactDOM from 'react-dom';
  * 1. State Updates May Be Asynchronous
  */
 class ChildCounter extends React.Component{
+ componentWillUnmount(){
+    console.log('ChildCounter componentWillUnmount 组件将要卸载!');
+ }
+ componentWillReceiveProps(){
+   console.log('ChildCounter componentWillReceiveProps 组件将要接收新的属性!');
+ }
  render(){
    return (
      <div  style={{border:'3px solid green'}}>
@@ -33,6 +39,21 @@ class Counter extends React.Component{
   componentDidMount(){
     console.log('5.componentDidMount 组件挂载完成!');
   }
+  shouldComponentUpdate(newProps,newState){
+    console.log('6.shouldComponentUpdate 组件是否要更新!');
+    //如果更新后的状态小于10则进行更新视图
+    if(newState.number<10){
+      return true;
+    }
+    return false;//否则不更新
+  }
+  componentWillUpdate(){
+    console.log('7.componentWillUpdate 组件将要更新');
+  }
+
+  componentDidUpdate(){
+    console.log('8.componentDidUpdate 组件更新完成');
+  }
   handleClick = ()=>{
     //1.this.setState方法是异步的
     //2.State Updates are Merged
@@ -45,7 +66,10 @@ class Counter extends React.Component{
       <div style={{border:'3px solid red'}}>
         <p>{this.state.number}</p>
         <button onClick={this.handleClick}>+</button>
-        <ChildCounter count={this.state.number}/>
+        {
+          this.state.number<8?<ChildCounter count={this.state.number}/>:null
+        }
+
       </div>
     )
   }
