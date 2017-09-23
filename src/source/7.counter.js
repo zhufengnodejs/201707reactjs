@@ -7,6 +7,12 @@ class ChildCounter extends React.Component{
  componentWillUnmount(){
     console.log('ChildCounter componentWillUnmount 组件将要卸载!');
  }
+ shouldComponentUpdate(newProps,newState){
+   if(newProps.count<7){
+     return true;
+   }
+   return false;
+ }
  componentWillReceiveProps(){
    console.log('ChildCounter componentWillReceiveProps 组件将要接收新的属性!');
  }
