@@ -1,4 +1,11 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
+class App extends React.Component{
+  render(){
+    return (
+      <div>
 
-ReactDOM.render(<h1>hello</h1>,document.querySelector('#root'));
+      </div>
+    )
+  }
+}
+ReactDOM.render(<App></App>,document.querySelector('#root'));
