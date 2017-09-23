@@ -1,3 +1,1 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-ReactDOM.render(<h1>hello</h1>,document.querySelector('#root'));
+import './source/2.children';
