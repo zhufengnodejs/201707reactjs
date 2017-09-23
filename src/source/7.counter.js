@@ -81,4 +81,4 @@ class Counter extends React.Component{
   }
 }
 
-ReactDOM.render(<Counter/>,document.querySelector('#root'));
+ReactDOM.render(<Counter init="1"/>,document.querySelector('#root'));
