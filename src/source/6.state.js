@@ -1,6 +1,9 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
-
+/**
+ * 1. let clock = new Clock();
+ * 2.
+ */
 class Clock extends Component{
   constructor(){
     super();
@@ -12,17 +15,19 @@ class Clock extends Component{
   componentDidMount(){
     console.log('3. componentDidMount 组件挂载完成!');
     this.timer = setInterval(()=>{
+      //Do Not Modify State Directly,Because this can't invoke render method
+      //this.state = {date:new Date()};
       this.setState({date:new Date()});
     },1000);
   }
   componentWillUnmount(){
     console.log('4. componentWillUnmount 组件将要卸载!');
+    clearInterval(this.timer);
   }
   render(){
     console.log('2. render 挂载动作!');
     return (
       <div>
-        <h1>Hello, world!</h1>
         <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
       </div>
     );
