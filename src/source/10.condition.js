@@ -8,6 +8,7 @@ import $ from 'jquery';
 class App extends React.Component {
   constructor() {
     super();
+    this.wd='';
     this.state = {words: [], index: -1};//1.初始化一个状态对象 {words:[]}
   }
 
@@ -30,14 +31,14 @@ class App extends React.Component {
   }
   handleKeyDown = (event) => {//处理按键按下的事件
     let keyCode = event.keyCode;
-    if (keyCode == 38 || keyCode == 40) {
+    if (keyCode === 38 || keyCode === 40) {
       let index = this.state.index;
-      if (keyCode == 38) {
+      if (keyCode === 38) {
         index--;
-          if(index == -2){
+          if(index === -2){
             index = this.state.words.length-1;
           }
-        } else if (keyCode == 40) {
+        } else if (keyCode === 40) {
           index++;
           if(index >= this.state.words.length ){
           index = -1;
@@ -54,15 +55,16 @@ class App extends React.Component {
           <div className="col-md-8 col-md-offset-2">
             <div className="panel panel-default">
               <div className="panel-heading">
-                <input value={this.state.index == -1?this.wd:this.state.words[this.state.index]} onKeyDown={this.handleKeyDown} onChange={this.handleChange} type="text"
+                <input value={this.state.index === -1?this.wd:this.state.words[this.state.index]} onKeyDown={this.handleKeyDown} onChange={this.handleChange} type="text"
                        className="form-control"/>
               </div>
               <div className="panel-body">
                 <ul className="list-group">
                   {
+                    this.state.words.length>0?
                     this.state.words.map((item, index) => (
-                      <li className={"list-group-item "+(index==this.state.index?"active":"")} key={index}>{item}</li>
-                    ))
+                      <li className={"list-group-item "+(index===this.state.index?"active":"")} key={index}>{item}</li>
+                    )):<div>暂无数据</div>
                   }
                 </ul>
               </div>
