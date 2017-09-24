@@ -13,7 +13,6 @@ ul,li{
 }
 .sliders{
     position: absolute;
-    width:1500px;
 }
 .sliders .slider{
     float:left;
