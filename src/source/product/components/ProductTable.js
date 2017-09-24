@@ -5,10 +5,14 @@ export default class ProductTable extends Component {
   render() {
     let rows = [];//存放所有的行tr
     let lastCategory;
-    for(let i=0;i<this.props.products.length;i++){
+    for (let i = 0; i < this.props.products.length; i++) {
       let product = this.props.products[i];
-      if(product.category!==lastCategory){//如果当前产品的分类不等于lastCategory，就相当于开启了一个新的分类,输出一个分类行
-        rows.push(<ProductCategoryRow key={"category-"+i} category={product.category}/>);
+      if (this.props.keyword && !product.name.includes(this.props.keyword))
+        continue;
+      if (this.props.onlyStock && !product.stocked)
+        continue;
+      if (product.category !== lastCategory) {//如果当前产品的分类不等于lastCategory，就相当于开启了一个新的分类,输出一个分类行
+        rows.push(<ProductCategoryRow key={"category-" + i} category={product.category}/>);
         lastCategory = product.category;
       }
       rows.push(<ProductRow key={i} product={product}/>);
@@ -17,10 +21,10 @@ export default class ProductTable extends Component {
     return (
       <table>
         <thead>
-          <tr>
-            <th style={{fontWeight:'bold'}}>Name</th>
-            <th style={{fontWeight:'bold'}}>Price</th>
-          </tr>
+        <tr>
+          <th style={{fontWeight: 'bold'}}>Name</th>
+          <th style={{fontWeight: 'bold'}}>Price</th>
+        </tr>
         </thead>
         <tbody>
         {rows}
