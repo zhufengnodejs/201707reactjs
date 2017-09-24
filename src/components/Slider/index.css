@@ -1,6 +1,26 @@
+*{
+    padding: 0;
+    margin: 0;}
+ul,li{
+    list-style: none;
+}
 .slider-wrapper{
     width:500px;
-    height:400px;
+    height:500px;
     margin:30px auto;
-    border:1px solid lightcoral;
+    position: relative;
+    border:1px solid red;
+}
+.sliders{
+    position: absolute;
+    width:1500px;
+}
+.sliders .slider{
+    float:left;
+    width:500px;
+    height:500px;
+}
+.sliders .slider img{
+    width:100%;
+    height:100%;
 }
