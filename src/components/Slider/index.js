@@ -33,15 +33,17 @@ export default class Slider extends Component {
   render() {
     return (
       <div
-        onMouseOver={()=>clearInterval(this.timer)}
-        onMouseOut={this.go}
+        onMouseOver={this.props.pause?()=>clearInterval(this.timer):null}
+        onMouseOut={this.props.pause?this.go:null}
         className="slider-wrapper">
         <SliderItems index={this.state.index}
                      images={this.props.images}
                      speed={this.props.speed}
         />
-        <SliderArrows turn={this.turn}/>
-        <SliderDots images={this.props.images}/>
+        {this.props.arrow&&<SliderArrows turn={this.turn}/>}
+        {this.props.dots&&<SliderDots turn={this.turn}                                       index={this.state.index}
+                                      images={this.props.images}/>}
+
       </div>
     )
   }
