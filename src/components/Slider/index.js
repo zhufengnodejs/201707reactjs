@@ -24,17 +24,22 @@ export default class Slider extends Component {
     if(index>=this.props.images.length){
       index = 0;
     }
+    if(index<0){
+      index = this.props.images.length - 1;
+    }
     this.setState({index});
   }
   render() {
-
     return (
-      <div className="slider-wrapper">
+      <div
+        onMouseOver={()=>clearInterval(this.timer)}
+        onMouseOut={this.go}
+        className="slider-wrapper">
         <SliderItems index={this.state.index}
                      images={this.props.images}
                      speed={this.props.speed}
         />
-        <SliderArrows/>
+        <SliderArrows turn={this.turn}/>
       </div>
     )
   }
