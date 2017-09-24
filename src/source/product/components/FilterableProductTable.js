@@ -6,7 +6,7 @@ export default class FilterableProductTable extends Component{
         return (
             <div style={{margin:'30px auto',width:'60%'}}>
               <SearchBar/>
-              <ProductTable/>
+              <ProductTable products={this.props.products}/>
             </div>
         )
     }
