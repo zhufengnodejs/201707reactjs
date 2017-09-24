@@ -39,6 +39,9 @@ ul,li{
     background-color: #EEE;
     cursor: pointer;
 }
+.arrows .arrow:hover{
+    background-color: #CCC;
+}
 .arrows .arrow:nth-child(1){
     float:left;
     margin-left:5px;
@@ -46,4 +49,23 @@ ul,li{
 .arrows .arrow:nth-child(2){
     float:right;
     margin-right:5px;
+}
+.dots{
+    position: absolute;
+    bottom:20px;
+    width:100%;
+    text-align: center;
+    height:20px;
+}
+.dots .dot{
+    display:inline-block;
+    width:20px;
+    height:20px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #EEE;
+    margin-left:10px;
+}
+.dots .dot:hover{
+    background-color: #CCC;
 }
