@@ -49,6 +49,15 @@ class App extends React.Component {
   }
 
   render() {
+    let hasContent = this.state.words.length>0;
+    let lis ;
+    if(hasContent){
+       lis = this.state.words.map((item, index) => (
+         <li className={"list-group-item "+(index===this.state.index?"active":"")} key={index}>{item}</li>
+       ));
+    }else{
+      lis = <div>暂无数据</div>;
+    }
     return (
       <div className="container" style={{marginTop: '20px'}}>
         <div className="row">
@@ -61,10 +70,9 @@ class App extends React.Component {
               <div className="panel-body">
                 <ul className="list-group">
                   {
-                    this.state.words.length>0?
-                    this.state.words.map((item, index) => (
+                    this.state.words.length>0&&this.state.words.map((item, index) => (
                       <li className={"list-group-item "+(index===this.state.index?"active":"")} key={index}>{item}</li>
-                    )):<div>暂无数据</div>
+                    ))
                   }
                 </ul>
               </div>
