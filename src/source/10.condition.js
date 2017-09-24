@@ -40,7 +40,7 @@ class App extends React.Component {
         } else if (keyCode == 40) {
           index++;
           if(index >= this.state.words.length ){
-          index = 0;
+          index = -1;
         }
       }
       this.setState({index});
