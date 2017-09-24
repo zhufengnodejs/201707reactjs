@@ -33,8 +33,14 @@ class App extends React.Component {
       let index = this.state.index;
       if (keyCode == 38) {
         index--;
+        if(index < 0){
+          index = this.state.words.length-1;
+        }
       } else if (keyCode == 40) {
         index++;
+        if(index >= this.state.words.length ){
+          index = 0;
+        }
       }
       this.setState({index});
     }
@@ -47,7 +53,7 @@ class App extends React.Component {
           <div className="col-md-8 col-md-offset-2">
             <div className="panel panel-default">
               <div className="panel-heading">
-                <input onKeyDown={this.handleKeyDown} onChange={this.handleChange} type="text"
+                <input value={this.state.words[this.state.index]} onKeyDown={this.handleKeyDown} onChange={this.handleChange} type="text"
                        className="form-control"/>
               </div>
               <div className="panel-body">
