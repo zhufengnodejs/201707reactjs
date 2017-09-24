@@ -66,6 +66,9 @@ ul,li{
     background-color: #EEE;
     margin-left:10px;
 }
+.dots .dot.active{
+    background-color: red;
+}
 .dots .dot:hover{
     background-color: #CCC;
 }
