@@ -25,7 +25,7 @@ class App extends React.Component {
       jsonp: 'cb',//用来指定后台获取访问方法名的参数名
       //{q:"a",p:false,s:["爱奇艺","阿里云"]};
       success: (data) => {
-        this.setState({words: data.s});
+        this.setState({words: data.s,index:-1});
       }
     })
   }
