@@ -10,6 +10,7 @@ ul,li{
     margin:30px auto;
     position: relative;
     border:1px solid red;
+    overflow: hidden;
 }
 .sliders{
     position: absolute;
