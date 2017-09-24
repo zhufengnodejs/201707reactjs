@@ -1,15 +1,17 @@
 import React, {Component} from 'react';
+import ProductCategoryRow from "./ProductCategoryRow ";
+import ProductRow from "./ProductRow";
 export default class ProductTable extends Component {
   render() {
     let rows = [];//存放所有的行tr
     let lastCategory;
     for(let i=0;i<this.props.products.length;i++){
       let product = this.props.products[i];
-      if(product.category!=lastCategory){//如果当前产品的分类不等于lastCategory，就相当于开启了一个新的分类,输出一个分类行
-        rows.push(<tr key={"category-"+i}><td style={{fontWeight:'bold'}} colSpan={2}>{product.category}</td></tr>);
+      if(product.category!==lastCategory){//如果当前产品的分类不等于lastCategory，就相当于开启了一个新的分类,输出一个分类行
+        rows.push(<ProductCategoryRow key={"category-"+i} category={product.category}/>);
         lastCategory = product.category;
       }
-      rows.push(<tr key={i}><td style={{"color":product.stocked?"black":"red"}}>{product.name}</td><td>{product.price}</td></tr>);
+      rows.push(<ProductRow key={i} product={product}/>);
     }
 
     return (
