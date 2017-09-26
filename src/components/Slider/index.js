@@ -9,6 +9,7 @@ export default class Slider extends Component {
     this.state = {index:0};
   }
   componentDidMount(){
+    this.sliders = document.querySelector('.sliders');
     if(this.props.auto){//如果要自动启动轮播的话
         this.go();//开始轮播
     }
@@ -18,15 +19,29 @@ export default class Slider extends Component {
       this.turn(1);
     },this.props.delay*1000);
   }
+
   //step是步长，走几步
   turn = (step)=>{
+    console.log(this.sliders);
     let index = this.state.index;
     index+=step;
-    if(index>=this.props.images.length){
-      index = 0;
+    if(index > this.props.images.length){
+      this.sliders.style.transitionDuration = '0s';
+      this.sliders.style.left = 0;
+      //只有强行调用此方法的时候才会强制浏览器重新真正计算left值
+      getComputedStyle(this.sliders,null).left;
+      this.sliders.style.transitionDuration = this.props.speed+'s';
+      this.setState({index:1});
+      return;
     }
     if(index<0){
-      index = this.props.images.length - 1;
+      this.sliders.style.transitionDuration = '0s';
+      this.sliders.style.left = this.props.images.length*-500+'px';
+      //只有强行调用此方法的时候才会强制浏览器重新真正计算left值
+      getComputedStyle(this.sliders,null).left;
+      this.sliders.style.transitionDuration = this.props.speed+'s';
+      this.setState({index:this.props.images.length-1});
+      return;
     }
     this.setState({index});
   }
